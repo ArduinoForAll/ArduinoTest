@@ -1,5 +1,3 @@
- int LEDS[5] = {255,85,0,0,0};
-
 void setup() {
   pinMode(3, OUTPUT);
   pinMode(5, OUTPUT);
@@ -9,6 +7,7 @@ void setup() {
 }
 
 void loop(){
+  int LEDS[5] = {255,85,0,0,0};
   for(int k = 0; k < 5; k++)
   {
     while(LEDS[k] > 0)
@@ -21,13 +20,16 @@ void loop(){
       LEDS[k] = LEDS[k] - 3;
       if(k+2 < 5)
       {
-        LEDS[k+1] = LEDS[k+1] + 1;
-        LEDS[k+2] = LEDS[k+2] + 2;
+        LEDS[k+1] = LEDS[k+1] + 2;
+        LEDS[k+2] = LEDS[k+2] + 1;
+      }else if(k+1 < 5){
+        LEDS[k+1] = LEDS[k+1] + 2;
+        LEDS[k-3] = LEDS[k-3] + 1;
       }else{
-        LEDS[k+1] = LEDS[k+1] + 1;
+        LEDS[k-4] = LEDS[k+1] + 2;
         LEDS[k-3] = LEDS[k-3] + 1;
       }
-      delay(50);
+      delay(10);
     }
   }
 }
